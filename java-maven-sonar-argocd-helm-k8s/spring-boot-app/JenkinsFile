@@ -34,14 +34,13 @@ pipeline {
     
     stage('Build docker image') {
     environment {
-        
         DOCKERFILE_LOCATION = "java-maven-sonar-argocd-helm-k8s/spring-boot-app/Dockerfile"
-       
+        DOCKER_IMAGE_NAME = "arunodhai/ultimate-cicd"
     }
     steps {
         script {
-            sh 'ls -la ${DOCKERFILE_LOCATION}'  // Print directory contents for debugging
-            sh 'docker build -t arunodhai/ultimate-cicd -f ${DOCKERFILE_LOCATION} .'
+            sh "ls -la ${DOCKERFILE_LOCATION}"  // Print directory contents for debugging
+            sh "docker build -t ${DOCKER_IMAGE_NAME} -f ${DOCKERFILE_LOCATION} ."
         }
     }
 }
